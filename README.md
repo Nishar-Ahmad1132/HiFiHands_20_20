@@ -153,3 +153,64 @@ Participants performed gestures naturally without strict posture or camera place
         - Spatio-temporal Transformers
         - Multimodal fusion architectures
 ```
+## Models Used
+
+We evaluated representative architectures from two categories: **skeleton-based** and **RGB-based** gesture recognition models.
+
+| Model | Type | Description |
+|------|------|-------------|
+| ST-GCN | Skeleton-based | Graph convolution network modeling spatial-temporal relationships between 21 hand joints |
+| STGT | Skeleton-based | Transformer-based model capturing long-range spatial and temporal dependencies |
+| 3D ResNet | RGB-based | 3D convolution network learning spatio-temporal features from video clips |
+| SlowFast | RGB-based | Dual-pathway architecture capturing both slow and fast motion dynamics |
+
+
+Skeleton models operate on **21 3D hand keypoints**, while RGB models use **video clips sampled from gesture sequences**.
+
+---
+
+## Training Configuration
+
+| Parameter | Value |
+|----------|------|
+| Optimizer | Adam |
+| Learning Rate | 1e-4 |
+| Batch Size | 32 |
+| Training Epochs | 80 |
+| RGB Clip Length | 64 frames |
+
+---
+
+## Evaluation Protocols
+
+We evaluate models under the following settings:
+
+| Protocol | Description |
+|--------|-------------|
+| Cross-Subject (LOSO) | Train on 15 subjects, test on 5 unseen subjects |
+| Cross-Viewpoint | Train on allocentric gestures, test on egocentric gestures |
+| OOD Kinematic | Train on male participants, test on female participants |
+
+---
+
+## Model Performance
+
+| Model | Type | Cross-Subject | Cross-Viewpoint |
+|------|------|------|------|
+| ST-GCN | Skeleton-based | 91.3 | 68.4 |
+| STGT | Skeleton-based | 93.5 | 71.2 |
+| 3D ResNet | RGB-based | 89.7 | 60.5 |
+| SlowFast | RGB-based | 92.8 | 62.7 |
+| **STGT  (Ours)** | Both | **94.1** | **76.5** |
+
+---
+
+## Final Model Used
+
+For training and evaluation of the **Hi-Fi Hands 20/20 dataset**, we primarily used the following model:
+
+```
+Spatial Temporal Graph Transformer (STGT)
+```
+
+This model operates on **21 3D hand skeletal keypoints** and captures long-range spatial and temporal dependencies between joints, making it suitable for modeling complex hand gesture dynamics.
