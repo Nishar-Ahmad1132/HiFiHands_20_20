@@ -1,0 +1,21 @@
+gesture_id,gesture_name,topology,motion_type
+G01,Thumbs up,single,static
+G02,Thumbs down,single,static
+G03,Victory,single,static
+G04,Okay,single,static
+G05,Point,single,static
+G06,Heart,dual,static
+G07,Box,dual,static
+G08,Swipe right,single,dynamic
+G09,Swipe Left,single,dynamic
+G10,Swipe up,single,dynamic
+G11,Swipe Down,single,dynamic
+G12,Rotate CW,single,dynamic
+G13,Rotate CCW,single,dynamic
+G14,Come,single,dynamic
+G15,Snap,single,dynamic
+G16,Pinch In,single,dynamic
+G17,Pinch Out,single,dynamic
+G18,Clap,dual,dynamic
+G19,Book,dual,dynamic
+G20,Drive,dual,dynamic
